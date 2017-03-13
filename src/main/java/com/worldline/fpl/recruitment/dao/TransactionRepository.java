@@ -23,4 +23,7 @@ public interface TransactionRepository {
 	 * @return
 	 */
 	Page<Transaction> getTransactionsByAccount(String accountId, Pageable p);
+	
+	// Delete transaction 
+	public void deleteTransaction(String accountIdTransaction,String idTransaction);
 }

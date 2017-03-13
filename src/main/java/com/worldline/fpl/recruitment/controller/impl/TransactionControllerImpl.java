@@ -15,6 +15,8 @@ import com.worldline.fpl.recruitment.controller.TransactionController;
 import com.worldline.fpl.recruitment.json.TransactionResponse;
 import com.worldline.fpl.recruitment.service.TransactionService;
 
+import io.swagger.annotations.ApiParam;
+
 /**
  * Implementation of {@link TransactionController}
  * 
@@ -43,6 +45,13 @@ public class TransactionControllerImpl implements TransactionController {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
 		}
 		return ResponseEntity.ok().body(page);
+	}
+	
+	@Override
+	public void deleteAccount(
+			  @PathVariable("accountId") String accountId, @PathVariable("transactionId") String transactionId) {
+		
+				transactionService.delete(accountId,transactionId);
 	}
 
 }

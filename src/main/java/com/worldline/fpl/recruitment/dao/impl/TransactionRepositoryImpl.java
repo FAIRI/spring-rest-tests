@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import com.worldline.fpl.recruitment.dao.TransactionRepository;
+import com.worldline.fpl.recruitment.entity.Account;
 import com.worldline.fpl.recruitment.entity.Transaction;
 
 /**
@@ -46,11 +47,13 @@ public class TransactionRepositoryImpl implements TransactionRepository,
 			transactions.add(transaction);
 		}
 		{
+			
 			Transaction transaction = new Transaction();
 			transaction.setAccountId("1");
 			transaction.setBalance(BigDecimal.valueOf(-12.12));
 			transaction.setId("3");
 			transaction.setNumber("12151885122");
+			
 			transactions.add(transaction);
 		}
 	}
@@ -61,6 +64,19 @@ public class TransactionRepositoryImpl implements TransactionRepository,
 		return new PageImpl<Transaction>(transactions.stream()
 				.filter(t -> t.getAccountId().equals(accountId))
 				.collect(Collectors.toList()));
+	}
+	@Override
+	//Supprimer une transaction ,parcourir toute la liste pour trouver l'objet a supprimer ,une transaction associé a un compte
+	public void deleteTransaction(String accountIdTransaction,String idTransaction) {
+		// TODO Auto-generated method stub
+		List<Transaction> tempo = transactions;
+		for(Transaction tran : tempo){
+			if(tran.getId().equals(idTransaction) && tran.getAccountId().equals(accountIdTransaction)){
+				transactions.remove(tran);
+				break;
+			}
+		}   
+		 
 	}
 
 }

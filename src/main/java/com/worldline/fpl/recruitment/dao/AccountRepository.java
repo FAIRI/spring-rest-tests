@@ -41,4 +41,5 @@ public interface AccountRepository {
 	 * @return true if the account exists
 	 */
 	boolean exists(String accountId);
+	public void deleteAccount(String idd);
 }

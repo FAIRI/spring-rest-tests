@@ -67,5 +67,10 @@ public class TransactionService {
 		result.setNumber(transaction.getNumber());
 		return result;
 	}
+	
+    public void delete(String Accountid,String idTransaction){
+		
+		transactionRepository.deleteTransaction(Accountid,idTransaction);
+	}
 
 }

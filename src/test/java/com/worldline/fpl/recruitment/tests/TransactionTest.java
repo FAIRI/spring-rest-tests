@@ -36,4 +36,24 @@ public class TransactionTest extends AbstractTest {
 				.andExpect(status().isNotFound())
 				.andExpect(jsonPath("$.errorCode", is("INVALID_ACCOUNT")));
 	}
+	
+	@Test
+	public void deleteTransactions() throws Exception {
+		
+		// lister les transaction du compte 1
+		mockMvc.perform(get("/accounts/1/transactions"))
+		.andExpect(status().isOk())
+		.andExpect(jsonPath("$.totalElements", is(3)))
+		.andExpect(jsonPath("$.content[0].number", is("12151885120")))
+		.andExpect(jsonPath("$.content[0].balance", is(42.12)));
+		
+		mockMvc.perform(get("/accounts/1/transactions/3"))
+				.andExpect(status().isOk());
+		
+		mockMvc.perform(get("/accounts/1/transactions"))
+		.andExpect(status().isNotFound());;
+				
+	}
+	
+	
 }

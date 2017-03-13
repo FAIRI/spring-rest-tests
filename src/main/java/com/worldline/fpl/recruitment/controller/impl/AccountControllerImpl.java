@@ -50,5 +50,12 @@ public class AccountControllerImpl implements AccountController {
 		return ResponseEntity.ok().body(
 				accountService.getAccountDetails(accountId));
 	}
+	
+	@Override
+	public void deleteAccount(
+			@PathVariable("accountId") String accountId) {
+		
+				accountService.delete(accountId);
+	}
 
 }

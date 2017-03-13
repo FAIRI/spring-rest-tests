@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.worldline.fpl.recruitment.dao.AccountRepository;
 import com.worldline.fpl.recruitment.entity.Account;
 
+
 /**
  * Implementation of {@link AccountRepository}
  * 
@@ -51,6 +52,46 @@ public class AccountRepositoryImpl implements AccountRepository,
 			account.setBalance(BigDecimal.valueOf(25.12));
 			accounts.add(account);
 		}
+		{
+			Account account = new Account();
+			account.setId("3");
+			account.setCreationDate(new Date());
+			account.setActive(false);
+			account.setType("CURRENT");
+			account.setNumber("01000251217");
+			account.setBalance(BigDecimal.valueOf(25.12));
+			accounts.add(account);
+		}
+		{
+			Account account = new Account();
+			account.setId("6");
+			account.setCreationDate(new Date());
+			account.setActive(false);
+			account.setType("CURRENT");
+			account.setNumber("01000251218");
+			account.setBalance(BigDecimal.valueOf(25.12));
+			accounts.add(account);
+		}
+		{
+			Account account = new Account();
+			account.setId("7");
+			account.setCreationDate(new Date());
+			account.setActive(false);
+			account.setType("CURRENT");
+			account.setNumber("01000251219");
+			account.setBalance(BigDecimal.valueOf(25.12));
+			accounts.add(account);
+		}
+		{
+			Account account = new Account();
+			account.setId("8");
+			account.setCreationDate(new Date());
+			account.setActive(false);
+			account.setType("CURRENT");
+			account.setNumber("01000251217");
+			account.setBalance(BigDecimal.valueOf(25.12));
+			accounts.add(account);
+		}
 
 	}
 
@@ -68,5 +109,17 @@ public class AccountRepositoryImpl implements AccountRepository,
 	@Override
 	public boolean exists(String accountId) {
 		return accounts.stream().anyMatch(a -> a.getId().equals(accountId));
+	}
+	@Override
+	public void deleteAccount(String accountId) {
+		// TODO Auto-generated method stub
+		List<Account> tempo = accounts;
+		for(Account acc : tempo){
+			if(acc.getId().equals(accountId)){
+				accounts.remove(acc);
+				break;
+			}
+		}   
+		 
 	}
 }

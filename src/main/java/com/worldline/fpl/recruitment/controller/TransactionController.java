@@ -43,5 +43,13 @@ public interface TransactionController {
 	ResponseEntity<Page<TransactionResponse>> getTransactionsByAccount(
 			@ApiParam("Account ID") @PathVariable("accountId") String accountId,
 			@ApiParam("Pageable information") @PageableDefault Pageable p);
+	
+	@RequestMapping(value = "/{transactionId}", method = RequestMethod.DELETE)
+	@ApiResponses({ @ApiResponse(code = 404, message = "Account not found", response = ErrorResponse.class) })
+	public void deleteAccount(
+			 @ApiParam("Account ID") @PathVariable("accountId") String accountId, @ApiParam("Account") @PathVariable("transactionId") String transactionId);
+
+	
+	
 
 }

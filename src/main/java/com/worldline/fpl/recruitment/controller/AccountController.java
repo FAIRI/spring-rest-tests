@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.worldline.fpl.recruitment.dao.AccountRepository;
 import com.worldline.fpl.recruitment.json.AccountDetailsResponse;
 import com.worldline.fpl.recruitment.json.AccountResponse;
 import com.worldline.fpl.recruitment.json.ErrorResponse;
@@ -27,6 +28,7 @@ import com.worldline.fpl.recruitment.json.ErrorResponse;
 @RequestMapping(value = "/accounts", produces = MediaType.APPLICATION_JSON_VALUE)
 public interface AccountController {
 
+	
 	/**
 	 * Get account list
 	 * 
@@ -52,5 +54,24 @@ public interface AccountController {
 	@ApiResponses({ @ApiResponse(code = 404, message = "Account not found", response = ErrorResponse.class) })
 	ResponseEntity<AccountDetailsResponse> getAccountDetails(
 			@ApiParam("Account") @PathVariable("accountId") String accountId);
+
+	
+	/**
+	 * Delete account 
+	 * 
+	 * @param accountId
+	 *            the account id
+	 * 
+	 */
+	
+	@RequestMapping(value = "/{accountId}", method = RequestMethod.DELETE)
+	public void deleteAccount(
+			@ApiParam("Account") @PathVariable("accountId") String accountId);
+
+	
+
+
+
+
 
 }

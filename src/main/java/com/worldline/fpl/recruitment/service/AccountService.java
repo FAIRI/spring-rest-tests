@@ -46,6 +46,19 @@ public class AccountService {
 				.getContent().stream().map(this::mapToAccountResponse)
 				.collect(Collectors.toList()));
 	}
+	
+	/**
+	 * Delete account
+	 * 
+	 * @param accountId
+	 *           
+	 * 
+	 */
+	
+	public void delete(String accountId){
+		
+		accountRepository.deleteAccount(accountId);
+	}
 
 	/**
 	 * Check if an account exists
