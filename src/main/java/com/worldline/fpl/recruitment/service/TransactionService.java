@@ -1,5 +1,6 @@
 package com.worldline.fpl.recruitment.service;
 
+import java.math.BigDecimal;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +72,20 @@ public class TransactionService {
     public void delete(String Accountid,String idTransaction){
 		
 		transactionRepository.deleteTransaction(Accountid,idTransaction);
+	}
+	public boolean AddTransaction(String idTransaction,String idAccount,String number,BigDecimal balance) {
+		
+		transactionRepository.AddTransaction(idTransaction, idAccount, number, balance);
+		
+
+		return true;
+	}
+public boolean updateTransaction(String idTransaction,String idAccount,String number,BigDecimal balance) {
+		
+		transactionRepository.updateTransaction(idTransaction, idAccount, number, balance);
+		
+
+		return true;
 	}
 
 }

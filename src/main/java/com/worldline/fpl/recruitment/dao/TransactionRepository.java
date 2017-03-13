@@ -1,5 +1,7 @@
 package com.worldline.fpl.recruitment.dao;
 
+import java.math.BigDecimal;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -26,4 +28,7 @@ public interface TransactionRepository {
 	
 	// Delete transaction 
 	public void deleteTransaction(String accountIdTransaction,String idTransaction);
+	public boolean AddTransaction(String idTransaction,String idAccount,String number,BigDecimal balance);
+	public boolean updateTransaction(String idTransaction,String idAccount,String number,BigDecimal balance);
+	
 }
